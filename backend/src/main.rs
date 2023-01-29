@@ -1,4 +1,5 @@
 use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
+use actix_cors::Cors;
 
 #[get("/")]
 async fn hello() -> impl Responder {
@@ -17,7 +18,9 @@ async fn manual_hello() -> impl Responder {
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
+        let cors = Cors::permissive();
         App::new()
+            .wrap(cors)
             .service(hello)
             .service(echo)
             .route("/hey", web::get().to(manual_hello))
