@@ -33,10 +33,12 @@ pub fn App() -> Html {
 
     html! {
         <div>
-            <h1>{"Add some text for testing purposes:"}<br/></h1>
+            <h1>{"Rust web app demo..."}</h1>
+            <h3>{"Demonstration of a frontend-backend communication."}</h3>
+            <h3>{"Add some text to send:"}<br/></h3>
             <input type={"text"} onchange={on_text_input} />
             <button {onclick}>{ "Send!" }</button>
-            <p>{"Answer: "}{ &*answer }</p>
+            <p>{"Answer from the backend: "}{ &*answer }</p>
         </div>
     }
 }
